@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   tx_functions.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmors-ma <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mstygg <mstygg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 00:29:26 by tmors-ma          #+#    #+#             */
-/*   Updated: 2019/02/10 00:29:27 by tmors-ma         ###   ########.fr       */
+/*   Updated: 2019/02/27 01:41:08 by mstygg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "xalg.h"
 
-t_x		*new_tx(char *name)
+t_x		*new_tx(const char *name)
 {
 	t_x		*link;
 

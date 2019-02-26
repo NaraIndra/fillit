@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   utility_functions.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmors-ma <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mstygg <mstygg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 00:29:44 by tmors-ma          #+#    #+#             */
-/*   Updated: 2019/02/10 00:29:45 by tmors-ma         ###   ########.fr       */
+/*   Updated: 2019/02/27 01:41:56 by mstygg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "xalg.h"
 
-t_x		*find_column_object_by_name(t_x *root, char *name)
+t_x		*find_column_object_by_name(t_x *root, const char *name)
 {
 	t_x *t;
 

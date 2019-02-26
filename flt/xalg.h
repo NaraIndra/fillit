@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   xalg.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmors-ma <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mstygg <mstygg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 18:37:42 by tmors-ma          #+#    #+#             */
-/*   Updated: 2019/01/28 18:37:43 by tmors-ma         ###   ########.fr       */
+/*   Updated: 2019/02/27 01:42:49 by mstygg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct	s_x
 /*
 ** tx_functions.c
 */
-t_x				*new_tx(char *name);
+t_x				*new_tx(const char *name);
 t_x				*insert_right_tx(t_x *root, t_x *new);
 t_x				*insert_left_tx(t_x *root, t_x *new);
 t_x				*insert_up_tx(t_x *root, t_x *new);
@@ -47,7 +47,7 @@ void			uncover_inner_columns(t_x *r);
 /*
 ** utility_functions.c
 */
-t_x				*find_column_object_by_name(t_x *root, char *name);
+t_x				*find_column_object_by_name(t_x *root, const char *name);
 int				in_arr(t_x *e, t_x *arr[], int *size);
 int				is_connected(char *src);
 int				is_valid(char *str);
@@ -76,18 +76,18 @@ void			reconnect_secondary_columns(t_x *root);
 /*
 ** get_figure_functions.c
 */
-void			prepare_line(char *dst, char *src, int shift_margin);
+void			prepare_line(char *dst, char *src, int shift_margin, int map_size);
 int				get_shift_margin(char *str);
-int				get_figure(int fd, char *line, int prev_length);
-int				process_file(char *file_name, t_x *root);
+int				get_figure(int fd, char *line, int prev_length, int map_size);
+int				process_file(char *file_name, t_x *root, const char ***cols, int map_size);
 /*
 ** create_matrix_functions.c
 */
 t_x				*create_root(void);
-int				create_column_objects(t_x *root);
+int				create_column_objects(t_x *root, const char ***cols);
 t_x				*append_figure_type_column(t_x *root, char *figure);
-int				insert_figure(t_x *root, t_x *row, char *line);
-int				create_matrix_row(t_x *root, char *figure, char *line);
+int				insert_figure(t_x *root, t_x *row, char *line, const char ***cols);
+int				create_matrix_row(t_x *root, char *figure, char *line, const char ***cols);
 /*
 ** enlarge_map_functions.c
 */
