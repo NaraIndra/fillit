@@ -2,8 +2,6 @@
 #include "xalg.h"
 #define epsilon 1e-5
 
-//static char		*cols[17] = {"11", "12", "13", "14", "21", "22", "23",\
-//	"24", "31", "32", "33", "34", "41", "42", "43", "44", 0};
 double		ft_abs(double n)
 {
 	return (n >= 0) ? (n) : (-n);
@@ -160,7 +158,6 @@ static int	c_f(char *filename)
 	close(fd);
 	return (count);
 }
-
 int		main(int argc, char **argv)
 {
 	t_x			*root;
@@ -179,19 +176,41 @@ int		main(int argc, char **argv)
 	tt = (const char**)c_s;
 	if (!(root = create_root()) || !(create_column_objects(root, &tt)) 
 		|| (process_file(argv[1], root, &tt, count) < 0))
-		return (-1);
-	//print_structure(root);
-	//adjust_matrix(root, count);
-	if (!matrix_extrapolate(root, count, 1))
-		return (-1);
+		return (clear_print_and_return(0, root));
 //	print_structure(root);
+//	printf("\n");
+	if (!matrix_extrapolate(root, count, 1))
+		return (clear_print_and_return(0, root));
+	disconnect_secondary_columns(root);
+//	print_structure(root);
+	while (!(res = xalg(root, &solution)))
+		if (!enlarge_map(root, ++count))
+			return (clear_print_and_return(0, root));
+	//reconnect_secondary_columns(root);
+	//clear_structure(&root);
+	return (clear_print_and_return(res < 0 ? (0) : (1), root));
+}
+/*
+int		main(int argc, char **argv)
+{
+	t_x		*root;
+	t_list	*solution;
+	int		res;
+	int		map_size;
+
+	if (argc != 2)
+		return (print_usage());
+	solution = NULL;
+	if (!(root = create_root()) || !create_column_objects(root)
+		|| process_file(argv[1], root) < 0)
+		return (clear_print_and_return(0, root));
+	adjust_matrix(root, (map_size = get_map_size_structure(root)));
+	if (!matrix_extrapolate(root, map_size, 1))
+		return (clear_print_and_return(0, root));
 	disconnect_secondary_columns(root);
 	while (!(res = xalg(root, &solution)))
-	{
-		if (!enlarge_map(root, ++count))
-			return (-1);
-	}
-	reconnect_secondary_columns(root);
-	clear_structure(&root);
-	return (res > 0) ? (1) : (-1);
+		if (!enlarge_map(root, ++map_size))
+			return (clear_print_and_return(0, root));
+	return (clear_print_and_return(res < 0 ? 0 : 1, root));
 }
+*/
