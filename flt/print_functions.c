@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_functions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmors-ma <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mstygg <mstygg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 00:29:51 by tmors-ma          #+#    #+#             */
-/*   Updated: 2019/02/10 00:29:51 by tmors-ma         ###   ########.fr       */
+/*   Updated: 2019/03/01 01:35:08 by mstygg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@ int		print_usage(void)
 	return (-1);
 }
 
-int		clear_print_and_return(int res, t_x *root)
+int		clear_print_and_return(int res, t_x *root, char ***mx)
 {
+	free_mx(mx);
 	reconnect_secondary_columns(root);
 	clear_structure(&root);
 	if (!res)

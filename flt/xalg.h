@@ -6,7 +6,7 @@
 /*   By: mstygg <mstygg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 18:37:42 by tmors-ma          #+#    #+#             */
-/*   Updated: 2019/02/27 01:42:49 by mstygg           ###   ########.fr       */
+/*   Updated: 2019/03/01 01:35:37 by mstygg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include "../libft/libft.h"
 # include <stdio.h>
 # include <fcntl.h>
+#define EPS 1e-5
 
 typedef struct	s_x
 {
@@ -52,10 +53,12 @@ int				in_arr(t_x *e, t_x *arr[], int *size);
 int				is_connected(char *src);
 int				is_valid(char *str);
 void			clear_structure(t_x **root);
+double			ft_abs(double n);
+int				f_s(int nb);
 /*
 ** print_functions.c
 */
-int				clear_print_and_return(int res, t_x *root);
+int				clear_print_and_return(int res, t_x *root, char ***mx);
 int				print_usage(void);
 char			get_figure_name_by_point(t_list *solution, char *point);
 int				get_map_size_solution(t_list *solution);
@@ -79,15 +82,15 @@ void			reconnect_secondary_columns(t_x *root);
 void			prepare_line(char *dst, char *src, int shift_margin, int map_size);
 int				get_shift_margin(char *str);
 int				get_figure(int fd, char *line, int prev_length, int map_size);
-int				process_file(char *file_name, t_x *root, const char ***cols, int map_size);
+int				process_file(char *file_name, t_x *root, char ***cols, int map_size);
 /*
 ** create_matrix_functions.c
 */
 t_x				*create_root(void);
-int				create_column_objects(t_x *root, const char ***cols);
+int				create_column_objects(t_x *root, char ***cols);
 t_x				*append_figure_type_column(t_x *root, char *figure);
-int				insert_figure(t_x *root, t_x *row, char *line, const char ***cols);
-int				create_matrix_row(t_x *root, char *figure, char *line, const char ***cols);
+int				insert_figure(t_x *root, t_x *row, char *line, char ***cols);
+int				create_matrix_row(t_x *root, char *figure, char *line, char ***cols);
 /*
 ** enlarge_map_functions.c
 */
@@ -110,6 +113,17 @@ int				matrix_extrapolate_right_all(t_x *row, int map_size);
 int				copy_down(t_x *row, t_x *new_row, int xc);
 int				copy_right(t_x *row, t_x *new_row, int xc);
 int				matrix_insert_right_one(t_x *most_right);
+/*
+** almost_useless_func.c
+*/
+void 				cut_src(char **src);
+int					c_f(char *filename);
+int					fill_mx(char ***ar, int num);
+char			***create_ch(char ***new, int num);
+char			**free_mx(char ***arr);
+/*
+** sq_root_func.c
+*/
 /*
 ** main.c
 */

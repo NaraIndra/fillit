@@ -6,14 +6,11 @@
 /*   By: mstygg <mstygg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 00:30:11 by tmors-ma          #+#    #+#             */
-/*   Updated: 2019/02/27 01:39:58 by mstygg           ###   ########.fr       */
+/*   Updated: 2019/03/01 00:59:36 by mstygg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "xalg.h"
-
-//static char		*g_cols[17] = {"11", "12", "13", "14", "21", "22", "23",\
-//	"24", "31", "32", "33", "34", "41", "42", "43", "44", 0};
 
 t_x		*create_root(void)
 {
@@ -26,7 +23,7 @@ t_x		*create_root(void)
 	return (root);
 }
 
-int		create_column_objects(t_x *root, const char ***cols)
+int		create_column_objects(t_x *root, char ***cols)
 {
 	int		i;
 	t_x		*new;
@@ -57,7 +54,7 @@ t_x		*append_figure_type_column(t_x *root, char *figure)
 	return (root->r);
 }
 
-int		insert_figure(t_x *root, t_x *row, char *line, const char ***cols)
+int		insert_figure(t_x *root, t_x *row, char *line, char ***cols)
 {
 	int		i;
 	int		p;
@@ -83,7 +80,7 @@ int		insert_figure(t_x *root, t_x *row, char *line, const char ***cols)
 	return (1);
 }
 
-int		create_matrix_row(t_x *root, char *figure, char *line, const char ***cols)
+int		create_matrix_row(t_x *root, char *figure, char *line, char ***cols)
 {
 	t_x *t;
 	t_x *new;
