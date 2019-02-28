@@ -19,163 +19,47 @@
 ** shifts to the left, skips empty rows
 */
 
-static void cut_src(char **src, int shift_margin)
+static void cut_src(char **src)
 {
-	while(*(*src) != '#')
-		++(*src);
-	(*src)-=shift_margin;
+	int		i;
+
+	i = 0;
+	while (*((*src) + i) == '.' || *((*src) + i) == '\n')
+		++i;
+	while ((i -=5) >= 0)
+		(*src) += 5;
 }
 
 void	prepare_line(char *dst, char *src, int shift_margin, int map_size)
 {
-	int n;
-	int count;
-    int cn;
+	int		n;
+	int		count;
+    int		cn;
 
 	n = 0;
 	count = map_size;
     cn = shift_margin;
-//	char *tmp = dst;
-//    printf("SHIFT_MARGIN=%d\n", shift_margin);
-// 	printf("first_src=\n%s\n", src);
-	 cut_src(&src, shift_margin);
-//	 printf("src=\n%s\n", src);
-	while (*src++)
-	{
-		if (n == 4)
-		{
-	//		printf("dst=%s\n", tmp);
-            return ;
-		}
-		if (*(src - 1) == '#' && ++n && count--)
-        {
-            *dst++ = '1';
-   //         printf("(#)count=%d, dst=%s\n", count, tmp);
-        }
-		else if (*(src - 1) == '\n')
-		{
-       //     printf("(bc)dst=%s\n", tmp);
-     //       printf("count=%d\n", count);
-			while(count--)
-            {
-              //   printf("(in_n)src=\n%s\n, *(src-1)=%c,dst=%s\n", src, *(src-1), dst);
-				//*(dst + x++ % map_size + map_size * y) = '0';
-                *dst++='0';
-            }
-			count = map_size;
-            cn = shift_margin;
-   //         printf("(af)dst=%s\n", tmp);
-//			cn = shift_margin;
-//			++y;
-		}
-		else if (*(src - 1) == '.' && !cn)
-        {
-            *dst++='0';
-			--count;
-      //      printf("(.)count=%d, dst=%s\n",count,  tmp);
-        }
-        else    
-        {
-            --cn;
-        //    printf("(zero)count=%d\n", count);
-        }
-			//*(dst + x++ % map_size + map_size * y) = '0';
-	    //else if (*(src - 1) == '.' && count + shift_margin > map_size)
-		//	--cn;
-   //     printf("src=\n%s\n, *(src-1)=%c,dst=%s,x=%d, y=%d x/m+ y*m=%d\n", src, *(src-1), dst,x-1, y,  (x-1)%map_size + y*map_size);
-    //    printf("count+shift_m=%d, map=%d\n", count+shift_margin, map_size);
-	}
-}
-
-
-/*
-void	prepare_line(char *dst, char *src, int shift_margin, int map_size)
-{
-	int n;
-	int x;
-	int y;
-	int cn;
-	int count;
-
-	n = 0;
-	x = 0;
-	y = 0;
-	count = map_size;
-	cn = shift_margin;
 	cut_src(&src);
 	while (*src++)
 	{
 		if (n == 4)
-			return ;
+            return ;
 		if (*(src - 1) == '#' && ++n && count--)
-			*(dst + x++%map_size + map_size * y) = '1';
+            *dst++ = '1';
 		else if (*(src - 1) == '\n')
 		{
 			while(count--)
-				*(dst + x++ % map_size + map_size * y) = '0';
+                *dst++ = '0';
 			count = map_size;
-			cn = shift_margin;
-			++y;
+            cn = shift_margin;
 		}
-		else if (*(src - 1) == '.' && count + shift_margin <= map_size && count--)
-			*(dst + x++ % map_size + map_size * y) = '0';
-		else if (*(src - 1) == '.' && count > shift_margin + map_size)
-			--cn;
+		else if (*(src - 1) == '.' && !cn && count--)
+            *dst++ = '0';
+        else    
+            --cn;
 	}
 }
-*/
-/*
-void	prepare_line(char *dst, char *src, int shift_margin, int map_size)
-{
-	int n;
-	int x;
-	int y;
-	int cn;
-	int count;
 
-	n = 0;
-	x = 0;
-	y = 0;
-	count = map_size;
-	cn = shift_margin;
-	while (src[n] == '.' || src[n] == '\n')
-		n++;
-	while ((n -= 5) >= 0)
-		src += 5;
-	src += shift_margin;
-	n = 0;
-	while (*src)
-	{
-		if (n == 4)
-			return ;
-		if (*src == '#')
-		{
-			*(dst + x++%map_size + map_size * y) = '1';
-			n++;
-			--count;
-		}
-		else if (*src == '\n')
-		{
-			while(count--)
-				*(dst + x++%map_size + map_size * y) = '0';
-			count = map_size;
-			cn=shift_margin;
-			++y;
-		}
-		else if (*src == '.')
-		{
-			if (!cn)
-			{	
-					*(dst + x++%map_size + map_size * y) = '0';
-                    --count;
-            }
-			else 
-				--cn;
-		}
-		src++;
-	}
-}
-*/
 int		get_shift_margin(char *str)
 {
 	int i;

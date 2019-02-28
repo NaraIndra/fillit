@@ -180,7 +180,8 @@ int		main(int argc, char **argv)
 //	print_structure(root);
 //	printf("\n");
 	if (!matrix_extrapolate(root, count, 1))
-		return (clear_print_and_return(0, root));
+		return (clear_print_and_return(0, root));	
+//	print_structure(root);
 	disconnect_secondary_columns(root);
 //	print_structure(root);
 	while (!(res = xalg(root, &solution)))
