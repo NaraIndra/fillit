@@ -6,7 +6,7 @@
 /*   By: mstygg <mstygg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 00:44:27 by mstygg            #+#    #+#             */
-/*   Updated: 2019/03/01 01:38:17 by mstygg           ###   ########.fr       */
+/*   Updated: 2019/03/01 21:54:02 by mstygg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int					main(int argc, char **argv)
 	t_x				*root;
 	t_list			*solution;
 	int				res;
-	static char		**c_s;
+	char		**c_s;
 	int				count;
 
 	if (argc != 2)
