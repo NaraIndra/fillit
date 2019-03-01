@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   enlarge_map_functions.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmors-ma <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mstygg <mstygg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 00:30:23 by tmors-ma          #+#    #+#             */
-/*   Updated: 2019/02/10 00:30:36 by tmors-ma         ###   ########.fr       */
+/*   Updated: 2019/03/01 22:51:40 by mstygg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "xalg.h"
 
-int		get_map_size_structure(t_x *root)
+int		get_m_s_structure(t_x *root)
 {
 	t_x *co;
 	t_x *y;
@@ -41,6 +41,8 @@ void	adjust_matrix(t_x *root, int map_size)
 {
 	t_x *co;
 
+	if (map_size > 4)
+		return ;
 	co = root;
 	while ((co = co->r) != root)
 	{
