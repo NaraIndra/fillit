@@ -6,7 +6,7 @@
 /*   By: mstygg <mstygg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 01:06:08 by mstygg            #+#    #+#             */
-/*   Updated: 2019/03/02 00:43:57 by mstygg           ###   ########.fr       */
+/*   Updated: 2019/03/02 17:58:21 by mstygg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int					c_f(char *filename)
 	close(fd);
 	return (count);
 }
+
 static char		*ft_z_ia(int n)
 {
 	char	s[12];
@@ -62,14 +63,17 @@ static char		*ft_z_ia(int n)
 		s[i] = '0';
 	}
 	s[++i] = '\0';
+	// printf("xia:n=%d\n", n);
 	ft_strreverse(s);
 	return (ft_strdup(s));
 }
 
+
+
 int					fill_mx(char ***ar, int num)
 {
 	char	*x;
-	//char 	*y;
+	char 	*y;
 	int		count;
 	int		i;
 	int		j;
@@ -77,65 +81,42 @@ int					fill_mx(char ***ar, int num)
 	count = 0;
 	i = 1;
 	j = 1;
-	if (!(*ar))
+	if (!ar)
 		return (0);
 
 	while(*((*ar) + count))
 	{
-		printf("**ar=%p\n", *((*ar) + count));
-		getchar();
+		// printf("**ar=%p\n", *(ar + count));
 		if (!(x = ft_z_ia(i)))
 			return (0);
-		x +=2;
-		if (!(x = ft_z_ia(i)))
+		if (!(y = ft_z_ia(j)))
 			return (0);
-		x -= 2;
-		printf("x=%s\n", x);
-		ft_strncpy(*((*ar) + count), x, 4);
-		printf("ar+count=%s\n",*((*ar) + count));
+	//	ft_strncpy(*(ar + count), x, 2);
+	//	printf("x=%s, y=%s\n",x, y);
+	//	 ft_strncpy(*(ar + count + 2), y, 2);
+	//	 printf("ar+count=%s\n",*(ar + count));
+        if (!(*((*ar) + count) = ft_strncpy(*((*ar) + count), x, 5)))
+            return (0);
+	    // printf("ar+count=%s\n",*(ar + count));
+        // getchar();
+        *((*ar) + count) = ft_strcat(*((*ar) + count), y);
+	    // printf("ar+count=%s\n",*(ar + count));
+  //      getchar();
 		free(x);
-		free(x+2);
-		if (j > num)
+		free(y);
+		if (j++ == num)
 		{
 			j = 1;
 			++i;
-			printf("i=%d, j=%d\n", i, j);
-		getchar();
 		}
 		++count;
-	}
-	return (1);
-}
-/*
-int					fill_mx(char ***ar, int num)
-{
-	int				i;
-	int				j;
-	char			first;
-	char			sec;
-	int				count;
+		// printf("i=%d, j=%d, count=%d\n", i, j, count);
 
-	i = 0;
-	j = 1;
-	first = '1';
-	sec = '1';
-	count = num * num;
-	if (!(*ar))
-		return (0);
-	while (*((*ar) + i))
-	{
-		*(*((*ar) + i) + 0) = first;
-		*(*((*ar) + i) + 1) = sec++;
-		if (sec == (num + 1) + '0')
-		{
-			sec = '1';
-			first++;
-		}
-		++i;
 	}
 	return (1);
 }
-*/
+
+
 char				***create_ch(char ***new, int num)
 {
 	char			**tmp;

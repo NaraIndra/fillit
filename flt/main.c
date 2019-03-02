@@ -6,7 +6,7 @@
 /*   By: mstygg <mstygg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 00:44:27 by mstygg            #+#    #+#             */
-/*   Updated: 2019/03/02 00:24:23 by mstygg           ###   ########.fr       */
+/*   Updated: 2019/03/02 17:57:02 by mstygg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,13 +91,21 @@ int					main(int argc, char **argv)
 	printf("count=%d\n", count);
 	if (!(fill_mx(create_ch(&c_s, count), count)))
 		return (-1);
+		int k = 0;
+	while(*(c_s + k))
+	{
+		printf("%s\n",*(c_s + k++));
+	}
 	if (!(root = create_root()) || !(create_column_objects(root, &c_s))
 		|| (process_file(argv[1], root, &c_s, count) < 0))
 		return (clear_print_and_return(0, root, &c_s));
+	printf("process_ok\n");
+	print_structure(root);
 	if (count == 4)
 		adjust_matrix(root, (count = get_m_s_structure(root)));
 	if (!matrix_extrapolate(root, count, 1))
 		return (clear_print_and_return(0, root, &c_s));
+	printf("extrapolate_ok\n");
 //	print_structure(root);
 //	getchar();
 	disconnect_secondary_columns(root);
