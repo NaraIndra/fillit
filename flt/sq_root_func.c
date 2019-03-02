@@ -6,7 +6,7 @@
 /*   By: mstygg <mstygg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 01:23:47 by mstygg            #+#    #+#             */
-/*   Updated: 2019/03/01 01:24:53 by mstygg           ###   ########.fr       */
+/*   Updated: 2019/03/02 23:30:01 by mstygg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,14 @@ int			f_s(int nb)
 		return (x_n_1);
 	}
 	return (-1);
+}
+
+int						ft_ustrlen(const unsigned char *s)
+{
+	const unsigned char	*tmp;
+
+	tmp = s;
+	while (*tmp++)
+		;
+	return (tmp - s - 1);
 }

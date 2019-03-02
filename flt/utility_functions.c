@@ -6,20 +6,23 @@
 /*   By: mstygg <mstygg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 00:29:44 by tmors-ma          #+#    #+#             */
-/*   Updated: 2019/03/01 01:24:42 by mstygg           ###   ########.fr       */
+/*   Updated: 2019/03/03 00:13:33 by mstygg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "xalg.h"
 
-t_x		*find_column_object_by_name(t_x *root, const char *name)
+t_x		*find_column_object_by_name(t_x *root,  unsigned char *name)
 {
 	t_x *t;
-
 	t = root;
+	printf("name:%d_%d", name[0], name[1]);
 	while ((t = t->r) != root)
-		if (ft_strcmp(t->n, name) == 0)
+	{
+		printf("t->r:%d_%d\n", t->n[0], t->n[1]);
+		if (t->n[0] == name[0] && t->n[1] == name[1])
 			return (t);
+	}
 	return (NULL);
 }
 
@@ -38,10 +41,10 @@ int		in_arr(t_x *e, t_x *arr[], int *size)
 }
 
 /*
-** ft_strlen(src) can be replaced by const
+** ft_strlen(src) can be replaced by 
 */
 
-int		is_connected(char *src)
+int		is_connected( unsigned char *src)
 {
 	int connects;
 	int i;
@@ -49,7 +52,7 @@ int		is_connected(char *src)
 
 	connects = 0;
 	i = 0;
-	length = ft_strlen(src);
+	length = ft_ustrlen(src);
 	while (*src)
 	{
 		i++;
@@ -69,14 +72,14 @@ int		is_connected(char *src)
 	return (connects < 6 ? 0 : 1);
 }
 
-int		is_valid(char *str)
+int		is_valid( unsigned char *str)
 {
 	int i;
 	int	pieces;
 
 	i = 0;
 	pieces = 0;
-	if (ft_strlen(str) < 20)
+	if (ft_ustrlen(str) < 20)
 		return (0);
 	while (str[i])
 	{

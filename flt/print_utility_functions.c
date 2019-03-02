@@ -3,27 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   print_utility_functions.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmors-ma <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mstygg <mstygg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 22:50:58 by tmors-ma          #+#    #+#             */
-/*   Updated: 2019/02/10 22:50:58 by tmors-ma         ###   ########.fr       */
+/*   Updated: 2019/03/02 23:36:21 by mstygg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "xalg.h"
-
+#include <stdio.h>
 void	print_row(t_x *row)
 {
 	t_x *x;
 
 	x = row;
 	ft_putchar('(');
-	ft_putstr(x->c->n);
+	ft_putstr((char*)x->c->n);
 	ft_putstr("), ");
 	while ((x = x->r) != row)
 	{
 		ft_putchar('(');
-		ft_putstr(x->c->n);
+		ft_putstr((char*)x->c->n);
 		ft_putstr("), ");
 	}
 	ft_putchar('\n');
@@ -42,7 +42,14 @@ void	print_column_objects(t_x *root)
 	{
 		if (t->p)
 			ft_putstr("[p]");
-		ft_putstr(t->n);
+		if (ft_ustrlen(t->n) == 2)
+		{
+			ft_putnbr(t->n[0]);
+			ft_putchar('_');
+			ft_putnbr(t->n[1]);
+		}
+		else 
+			ft_putstr((char*)t->n);
 		if (t->r != root)
 			ft_putstr(", ");
 	}
@@ -63,13 +70,15 @@ void	print_structure(t_x *root)
 		while ((r = r->d) != co)
 		{
 			ft_putchar('(');
-			ft_putstr(r->c->n);
+			ft_putstr((char*)r->c->n);
 			ft_putchar(')');
 			x = r;
 			while ((x = x->r) != r)
 			{
 				ft_putchar('(');
-				ft_putstr(x->c->n);
+				ft_putchar((int)x->c->n[0] + '0');
+				ft_putchar('_');
+				ft_putchar((int)x->c->n[1] + '0');
 				ft_putchar(')');
 			}
 			ft_putchar('\n');
@@ -92,12 +101,12 @@ int		print_solution_as_structure(t_list *solution)
 	{
 		r = (t_x*)t->content;
 		ft_putchar('(');
-		ft_putstr(r->c->n);
+		ft_putstr((char*)r->c->n);
 		ft_putstr("), ");
 		while ((r = r->r) != (t_x*)t->content)
 		{
 			ft_putchar('(');
-			ft_putstr(r->c->n);
+			ft_putstr((char*)r->c->n);
 			ft_putstr("), ");
 		}
 		ft_putchar('\n');

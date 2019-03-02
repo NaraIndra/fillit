@@ -6,7 +6,7 @@
 /*   By: mstygg <mstygg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 00:30:11 by tmors-ma          #+#    #+#             */
-/*   Updated: 2019/03/01 00:59:36 by mstygg           ###   ########.fr       */
+/*   Updated: 2019/03/02 23:00:01 by mstygg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,20 @@ t_x		*create_root(void)
 {
 	t_x *root;
 
-	if (!(root = new_tx("h")))
+	if (!(root = new_tx((const unsigned char*)"h")))
 		return (NULL);
 	root->d = NULL;
 	root->u = NULL;
 	return (root);
 }
 
-int		create_column_objects(t_x *root, char ***cols)
+int		create_column_objects(t_x *root, unsigned char ***cols)
 {
 	int		i;
 	t_x		*new;
 
 	i = 0;
+
 	while ((*cols)[i])
 	{
 		if (!(new = new_tx((*cols)[i])))
@@ -42,10 +43,9 @@ int		create_column_objects(t_x *root, char ***cols)
 	return (1);
 }
 
-t_x		*append_figure_type_column(t_x *root, char *figure)
+t_x		*append_figure_type_column(t_x *root, unsigned char *figure)
 {
 	t_x *new;
-
 	if (!(new = new_tx(figure)))
 		return (NULL);
 	while (root->r->p)
@@ -54,7 +54,7 @@ t_x		*append_figure_type_column(t_x *root, char *figure)
 	return (root->r);
 }
 
-int		insert_figure(t_x *root, t_x *row, char *line, char ***cols)
+int		insert_figure(t_x *root, t_x *row, unsigned char *line, unsigned char ***cols)
 {
 	int		i;
 	int		p;
@@ -80,7 +80,7 @@ int		insert_figure(t_x *root, t_x *row, char *line, char ***cols)
 	return (1);
 }
 
-int		create_matrix_row(t_x *root, char *figure, char *line, char ***cols)
+int		create_matrix_row(t_x *root, unsigned char *figure, unsigned char *line, unsigned char ***cols)
 {
 	t_x *t;
 	t_x *new;

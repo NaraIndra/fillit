@@ -6,27 +6,27 @@
 /*   By: mstygg <mstygg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 00:29:26 by tmors-ma          #+#    #+#             */
-/*   Updated: 2019/02/27 01:41:08 by mstygg           ###   ########.fr       */
+/*   Updated: 2019/03/02 23:28:08 by mstygg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "xalg.h"
 
-t_x		*new_tx(const char *name)
+t_x		*new_tx(const unsigned char *name)
 {
 	t_x		*link;
 
 	link = malloc(sizeof(*link));
 	if (!link)
 		return (NULL);
-	ft_bzero(link->n, 5);
-	ft_strcpy(link->n, name ? name : "");
+	link->n[0] = name ? name[0] : 0;
+	link->n[1] = name ? name[1] : 0;
 	link->l = link;
 	link->r = link;
 	link->u = link;
 	link->d = link;
 	link->c = link;
-	link->p = name && ft_strlen(name) < 2 && ft_isupper(*name) ? 1 : 0;
+	link->p = name && ft_ustrlen(name) < 2 && ft_isupper(*name) ? 1 : 0;
 	link->dr = name ? link : NULL;
 	link->dl = name ? link : NULL;
 	return (link);

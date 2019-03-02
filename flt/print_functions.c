@@ -6,7 +6,7 @@
 /*   By: mstygg <mstygg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 00:29:51 by tmors-ma          #+#    #+#             */
-/*   Updated: 2019/03/01 01:35:08 by mstygg           ###   ########.fr       */
+/*   Updated: 2019/03/02 23:32:07 by mstygg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		print_usage(void)
 	return (-1);
 }
 
-int		clear_print_and_return(int res, t_x *root, char ***mx)
+int		clear_print_and_return(int res, t_x *root, unsigned char ***mx)
 {
 	free_mx(mx);
 	reconnect_secondary_columns(root);
@@ -28,7 +28,7 @@ int		clear_print_and_return(int res, t_x *root, char ***mx)
 	return (res ? 1 : -1);
 }
 
-char	get_figure_name_by_point(t_list *solution, char *point)
+unsigned char	get_figure_name_by_point(t_list *solution, unsigned char *point)
 {
 	t_x		*r;
 	t_list	*t;
@@ -39,7 +39,7 @@ char	get_figure_name_by_point(t_list *solution, char *point)
 		r = (t_x*)t->content;
 		while ((r = r->r) != (t_x*)t->content)
 		{
-			if (!ft_strcmp(r->c->n, point))
+			if (!ft_strcmp((const char*)r->c->n, (const char*)point))
 				return (((t_x*)t->content)->c->n[0]);
 		}
 		t = t->next;
@@ -71,7 +71,7 @@ int		get_map_size_solution(t_list *solution)
 
 int		print_solution(t_list *solution)
 {
-	char	point[3];
+	unsigned char	point[3];
 	int		map_size;
 
 	point[0] = '1';

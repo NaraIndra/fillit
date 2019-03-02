@@ -6,7 +6,7 @@
 /*   By: mstygg <mstygg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 18:37:42 by tmors-ma          #+#    #+#             */
-/*   Updated: 2019/03/02 17:51:51 by mstygg           ###   ########.fr       */
+/*   Updated: 2019/03/02 23:27:36 by mstygg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,23 @@
 # include <fcntl.h>
 # define EPS 1e-5
 
-typedef struct	s_x
+typedef struct			s_x
 {
-	struct s_x	*l;
-	struct s_x	*r;
-	struct s_x	*dl;
-	struct s_x	*dr;
-	struct s_x	*u;
-	struct s_x	*d;
-	struct s_x	*c;
-	char		p;
-	char		n[5];
-}				t_x;
+	struct s_x			*l;
+	struct s_x			*r;
+	struct s_x			*dl;
+	struct s_x			*dr;
+	struct s_x			*u;
+	struct s_x			*d;
+	struct s_x			*c;
+	unsigned char		p;
+	unsigned char		n[2];
+}						t_x;
 
 /*
 ** tx_functions.c
 */
-t_x				*new_tx(const char *name);
+t_x				*new_tx(const unsigned char *name);
 t_x				*insert_right_tx(t_x *root, t_x *new);
 t_x				*insert_left_tx(t_x *root, t_x *new);
 t_x				*insert_up_tx(t_x *root, t_x *new);
@@ -48,19 +48,19 @@ void			uncover_inner_columns(t_x *r);
 /*
 ** utility_functions.c
 */
-t_x				*find_column_object_by_name(t_x *root, const char *name);
+t_x				*find_column_object_by_name(t_x *root,  unsigned char *name);
 int				in_arr(t_x *e, t_x *arr[], int *size);
-int				is_connected(char *src);
-int				is_valid(char *str);
+int				is_connected(unsigned char *src);
+int				is_valid(unsigned char *str);
 void			clear_structure(t_x **root);
 double			ft_abs(double n);
 int				f_s(int nb);
 /*
 ** print_functions.c
 */
-int				clear_print_and_return(int res, t_x *root, char ***mx);
+int				clear_print_and_return(int res, t_x *root, unsigned char ***mx);
 int				print_usage(void);
-char			get_figure_name_by_point(t_list *solution, char *point);
+unsigned char			get_figure_name_by_point(t_list *solution, unsigned char *point);
 int				get_m_s_solution(t_list *solution);
 int				print_solution(t_list *solution);
 /*
@@ -79,18 +79,18 @@ void			reconnect_secondary_columns(t_x *root);
 /*
 ** get_figure_functions.c
 */
-void			prepare_line(char *dst, char *src, int shift_margin, int m_s);
-int				get_shift_margin(char *str);
-int				get_figure(int fd, char *line, int prev_length, int m_s);
-int				process_file(char *file_name, t_x *root, char ***cols, int m_s);
+void			prepare_line(unsigned char *dst, unsigned char *src, int shift_margin, int m_s);
+int				get_shift_margin(unsigned char *str);
+int				get_figure(int fd, unsigned char *line, int prev_length, int m_s);
+int				process_file(char *file_name, t_x *root, unsigned char ***cols, int m_s);
 /*
 ** create_matrix_functions.c
 */
 t_x				*create_root(void);
-int				create_column_objects(t_x *root, char ***cols);
-t_x				*append_figure_type_column(t_x *root, char *figure);
-int				insert_figure(t_x *root, t_x *row, char *line, char ***cols);
-int				create_matrix_row(t_x *root, char *fig, char *line, char ***cs);
+int				create_column_objects(t_x *root, unsigned char ***cols);
+t_x				*append_figure_type_column(t_x *root, unsigned char *figure);
+int				insert_figure(t_x *root, t_x *row, unsigned char *line, unsigned char ***cols);
+int				create_matrix_row(t_x *root, unsigned char *fig, unsigned char *line, unsigned char ***cs);
 /*
 ** enlarge_map_functions.c
 */
@@ -116,14 +116,17 @@ int				matrix_insert_right_one(t_x *most_right);
 /*
 ** almost_useless_func.c
 */
-void			cut_src(char **src);
+void			cut_src(unsigned char **src);
 int				c_f(char *filename);
-int				fill_mx(char ***ar, int num);
-char			***create_ch(char ***new, int num);
-char			**free_mx(char ***arr);
+int				fill_mx(unsigned char ***ar, int num);
+unsigned char	***create_ch(unsigned char ***new, int num);
+unsigned char	**free_mx(unsigned char ***arr);
 /*
-** sq_root_func.c
+** sq_root_func.c  (root and unsigned strlen)
 */
+double			ft_abs(double n);
+int				f_s(int nb);
+int				ft_ustrlen(const unsigned char *str);
 /*
 ** main.c
 */
