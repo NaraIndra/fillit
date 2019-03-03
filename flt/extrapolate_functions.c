@@ -6,7 +6,7 @@
 /*   By: mstygg <mstygg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 00:30:47 by tmors-ma          #+#    #+#             */
-/*   Updated: 2019/03/03 00:56:42 by mstygg           ###   ########.fr       */
+/*   Updated: 2019/03/03 18:54:13 by mstygg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int		matrix_extrapolate(t_x *root, int map_size, int init)
 	t_x *co;
 
 	co = root;
-	print_column_objects(root);
 	while ((co = co->r) != root && co->p)
 		if (init == 1)
 		{
@@ -42,7 +41,6 @@ int		matrix_extrapolate_down_one(t_x *co)
 
 	y = co;
 	row = y->u->l->c->n[0];
-//	printf("row=%d\n", row);
 	while ((y = y->d) != co)
 		if (y->l->c->n[0] == row)
 		{
@@ -118,14 +116,10 @@ int		matrix_extrapolate_right_all(t_x *row, int map_size)
 	x = row;
 	while ((x = x->r) != row)
 		xc = x->c->n[1] > xc ? x->c->n[1] : xc;
-	printf("now_xc=%d, m_s=%d\n", xc, map_size);
-	getchar();
 	xc = map_size - xc;
 	i = 0;
 	while (++i <= xc)
 	{
-		printf("i=%d, map_size=%d, xc=%d\n",i-1, map_size, xc);
-		getchar();
 		if (!(new = new_tx(0)))
 			return (0);
 		insert_up_tx(row->c, new);

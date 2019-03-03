@@ -6,7 +6,7 @@
 /*   By: mstygg <mstygg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 00:30:11 by tmors-ma          #+#    #+#             */
-/*   Updated: 2019/03/02 23:00:01 by mstygg           ###   ########.fr       */
+/*   Updated: 2019/03/03 18:48:12 by mstygg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ int		create_column_objects(t_x *root, unsigned char ***cols)
 			return (-1);
 		}
 		insert_left_tx(root, new);
+		//printf("(c_o)\n");
+		//print_structure(root);
+		//getchar();
 		i++;
 	}
 	return (1);
@@ -46,6 +49,7 @@ int		create_column_objects(t_x *root, unsigned char ***cols)
 t_x		*append_figure_type_column(t_x *root, unsigned char *figure)
 {
 	t_x *new;
+	printf("(in_append)%c%c\n", figure[0], figure[1]+'0');
 	if (!(new = new_tx(figure)))
 		return (NULL);
 	while (root->r->p)

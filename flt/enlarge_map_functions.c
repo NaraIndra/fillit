@@ -6,7 +6,7 @@
 /*   By: mstygg <mstygg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 00:30:23 by tmors-ma          #+#    #+#             */
-/*   Updated: 2019/03/03 00:01:08 by mstygg           ###   ########.fr       */
+/*   Updated: 2019/03/03 18:58:34 by mstygg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,6 @@ void	adjust_matrix(t_x *root, int map_size)
 
 int		enlarge_map(t_x *root, int map_size)
 {
-	printf("enlarging\n");
-	getchar();
 	reconnect_secondary_columns(root);
 	if (!add_columns(root, map_size) || !add_row(root, map_size))
 		return (0);
@@ -102,10 +100,9 @@ int		add_row(t_x *root, int map_size)
 {
 	t_x		*new;
 	int		i;
-	unsigned char	name[3];
+	unsigned char	name[2];
 
 	name[0] = map_size;
-//	name[2] = 0;
 	i = 1;
 	while (i <= map_size)
 	{

@@ -6,7 +6,7 @@
 /*   By: mstygg <mstygg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 00:29:44 by tmors-ma          #+#    #+#             */
-/*   Updated: 2019/03/03 00:13:33 by mstygg           ###   ########.fr       */
+/*   Updated: 2019/03/03 18:51:02 by mstygg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,12 @@
 
 t_x		*find_column_object_by_name(t_x *root,  unsigned char *name)
 {
-	t_x *t;
+	t_x 	*t;
+
 	t = root;
-	printf("name:%d_%d", name[0], name[1]);
 	while ((t = t->r) != root)
-	{
-		printf("t->r:%d_%d\n", t->n[0], t->n[1]);
 		if (t->n[0] == name[0] && t->n[1] == name[1])
 			return (t);
-	}
 	return (NULL);
 }
 
@@ -36,7 +33,7 @@ int		in_arr(t_x *e, t_x *arr[], int *size)
 		if (arr[i] == e)
 			return (1);
 		i++;
-	}
+	}	
 	return (0);
 }
 

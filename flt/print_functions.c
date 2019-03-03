@@ -6,7 +6,7 @@
 /*   By: mstygg <mstygg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 00:29:51 by tmors-ma          #+#    #+#             */
-/*   Updated: 2019/03/02 23:32:07 by mstygg           ###   ########.fr       */
+/*   Updated: 2019/03/03 18:47:47 by mstygg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,8 @@ unsigned char	get_figure_name_by_point(t_list *solution, unsigned char *point)
 	{
 		r = (t_x*)t->content;
 		while ((r = r->r) != (t_x*)t->content)
-		{
-			if (!ft_strcmp((const char*)r->c->n, (const char*)point))
+			if (r->c->n[0] + '0' == point[0] && r->c->n[1] + '0' == point[1])
 				return (((t_x*)t->content)->c->n[0]);
-		}
 		t = t->next;
 	}
 	return ('.');
@@ -61,7 +59,7 @@ int		get_map_size_solution(t_list *solution)
 		x = r;
 		while ((x = x->r) != r)
 		{
-			max = x->c->n[0] > x->c->n[1] ? x->c->n[0] - '0' : x->c->n[1] - '0';
+			max = x->c->n[0]  > x->c->n[1] ? x->c->n[0] : x->c->n[1];
 			map_size = map_size < max ? max : map_size;
 		}
 		solution = solution->next;

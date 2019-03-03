@@ -6,7 +6,7 @@
 /*   By: mstygg <mstygg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 00:44:27 by mstygg            #+#    #+#             */
-/*   Updated: 2019/03/03 00:40:07 by mstygg           ###   ########.fr       */
+/*   Updated: 2019/03/03 18:49:52 by mstygg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,30 +90,11 @@ int					main(int argc, char **argv)
 	count = f_s(4 * c_f(argv[1])) < 4 ? (4) : f_s(4 * c_f(argv[1]));
 	if (!(fill_mx(create_ch(&c_s, count), count)))
 		return (-1);
-	int s = 0;
-	while(*(c_s + s))
-	{
-		printf(":%d:%d_%d\n", s, *(*(c_s + s) + 0), *(*(c_s + s) + 1));
-		++s;
-	}
-	getchar();
 	if (!(root = create_root()) || !(create_column_objects(root, &c_s))
 		|| (process_file(argv[1], root, &(c_s), count) < 0))
 		return (clear_print_and_return(0, root, &c_s));
-	print_structure(root);
-	getchar();
-	s = 0;
-	printf("count = %d\n", count);
-	while(*(c_s + s))
-	{
-		printf(":%d:%d_%d\n", s, *(*(c_s + s) + 0), *(*(c_s + s) + 1));
-		++s;
-	}
-	getchar();
 	if (count == 4)
 		adjust_matrix(root, (count = get_m_s_structure(root)));
-		printf("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
-		getchar();
 	if (!matrix_extrapolate(root, count, 1))
 		return (clear_print_and_return(0, root, &c_s));
 	disconnect_secondary_columns(root);
