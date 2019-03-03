@@ -6,18 +6,18 @@
 /*   By: mstygg <mstygg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 00:30:23 by tmors-ma          #+#    #+#             */
-/*   Updated: 2019/03/03 18:58:34 by mstygg           ###   ########.fr       */
+/*   Updated: 2019/03/03 19:36:43 by mstygg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "xalg.h"
 
-int		get_m_s_structure(t_x *root)
+int					get_m_s_structure(t_x *root)
 {
-	t_x *co;
-	t_x *y;
-	t_x *x;
-	int	max;
+	t_x				*co;
+	t_x				*y;
+	t_x				*x;
+	int				max;
 
 	max = 0;
 	co = root;
@@ -37,9 +37,9 @@ int		get_m_s_structure(t_x *root)
 	return (max);
 }
 
-void	adjust_matrix(t_x *root, int map_size)
+void				adjust_matrix(t_x *root, int map_size)
 {
-	t_x *co;
+	t_x				*co;
 
 	if (map_size > 4)
 		return ;
@@ -57,7 +57,7 @@ void	adjust_matrix(t_x *root, int map_size)
 	}
 }
 
-int		enlarge_map(t_x *root, int map_size)
+int					enlarge_map(t_x *root, int map_size)
 {
 	reconnect_secondary_columns(root);
 	if (!add_columns(root, map_size) || !add_row(root, map_size))
@@ -67,10 +67,10 @@ int		enlarge_map(t_x *root, int map_size)
 	return (1);
 }
 
-int		add_columns(t_x *root, int map_size)
+int					add_columns(t_x *root, int map_size)
 {
-	t_x		*x;
-	t_x		*new;
+	t_x				*x;
+	t_x				*new;
 	unsigned char	map_row;
 	unsigned char	name[2];
 
@@ -91,15 +91,13 @@ int		add_columns(t_x *root, int map_size)
 	if (!(new = new_tx(name)))
 		return (0);
 	insert_left_tx(x, new);
-	print_structure(root);
-	getchar();
 	return (1);
 }
 
-int		add_row(t_x *root, int map_size)
+int					add_row(t_x *root, int map_size)
 {
-	t_x		*new;
-	int		i;
+	t_x				*new;
+	int				i;
 	unsigned char	name[2];
 
 	name[0] = map_size;

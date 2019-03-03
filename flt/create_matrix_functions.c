@@ -6,15 +6,15 @@
 /*   By: mstygg <mstygg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 00:30:11 by tmors-ma          #+#    #+#             */
-/*   Updated: 2019/03/03 18:48:12 by mstygg           ###   ########.fr       */
+/*   Updated: 2019/03/03 19:33:09 by mstygg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "xalg.h"
 
-t_x		*create_root(void)
+t_x				*create_root(void)
 {
-	t_x *root;
+	t_x			*root;
 
 	if (!(root = new_tx((const unsigned char*)"h")))
 		return (NULL);
@@ -23,13 +23,12 @@ t_x		*create_root(void)
 	return (root);
 }
 
-int		create_column_objects(t_x *root, unsigned char ***cols)
+int				create_column_objects(t_x *root, unsigned char ***cols)
 {
-	int		i;
-	t_x		*new;
+	int			i;
+	t_x			*new;
 
 	i = 0;
-
 	while ((*cols)[i])
 	{
 		if (!(new = new_tx((*cols)[i])))
@@ -38,18 +37,15 @@ int		create_column_objects(t_x *root, unsigned char ***cols)
 			return (-1);
 		}
 		insert_left_tx(root, new);
-		//printf("(c_o)\n");
-		//print_structure(root);
-		//getchar();
 		i++;
 	}
 	return (1);
 }
 
-t_x		*append_figure_type_column(t_x *root, unsigned char *figure)
+t_x				*append_figure_type_column(t_x *root, unsigned char *figure)
 {
-	t_x *new;
-	printf("(in_append)%c%c\n", figure[0], figure[1]+'0');
+	t_x			*new;
+
 	if (!(new = new_tx(figure)))
 		return (NULL);
 	while (root->r->p)
@@ -58,12 +54,13 @@ t_x		*append_figure_type_column(t_x *root, unsigned char *figure)
 	return (root->r);
 }
 
-int		insert_figure(t_x *root, t_x *row, unsigned char *line, unsigned char ***cols)
+int				insert_figure(t_x *root, t_x *row, unsigned char *line,
+				unsigned char ***cols)
 {
-	int		i;
-	int		p;
-	t_x		*co;
-	t_x		*new;
+	int			i;
+	int			p;
+	t_x			*co;
+	t_x			*new;
 
 	p = 0;
 	i = 0;
@@ -84,10 +81,11 @@ int		insert_figure(t_x *root, t_x *row, unsigned char *line, unsigned char ***co
 	return (1);
 }
 
-int		create_matrix_row(t_x *root, unsigned char *figure, unsigned char *line, unsigned char ***cols)
+int				create_matrix_row(t_x *root, unsigned char *figure,
+				unsigned char *line, unsigned char ***cols)
 {
-	t_x *t;
-	t_x *new;
+	t_x			*t;
+	t_x			*new;
 
 	if (!(t = find_column_object_by_name(root, figure)))
 		t = append_figure_type_column(root, figure);

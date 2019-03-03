@@ -6,12 +6,13 @@
 /*   By: mstygg <mstygg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 22:50:58 by tmors-ma          #+#    #+#             */
-/*   Updated: 2019/03/02 23:36:21 by mstygg           ###   ########.fr       */
+/*   Updated: 2019/03/03 19:44:08 by mstygg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "xalg.h"
 #include <stdio.h>
+
 void	print_row(t_x *row)
 {
 	t_x *x;
@@ -48,7 +49,7 @@ void	print_column_objects(t_x *root)
 			ft_putchar('_');
 			ft_putnbr(t->n[1]);
 		}
-		else 
+		else
 			ft_putstr((char*)t->n);
 		if (t->r != root)
 			ft_putstr(", ");
@@ -77,7 +78,6 @@ void	print_structure(t_x *root)
 			{
 				ft_putchar('(');
 				ft_putchar((int)x->c->n[0] + '0');
-				ft_putchar('_');
 				ft_putchar((int)x->c->n[1] + '0');
 				ft_putchar(')');
 			}

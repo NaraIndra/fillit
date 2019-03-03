@@ -6,22 +6,22 @@
 /*   By: mstygg <mstygg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 01:23:47 by mstygg            #+#    #+#             */
-/*   Updated: 2019/03/02 23:30:01 by mstygg           ###   ########.fr       */
+/*   Updated: 2019/03/03 19:42:32 by mstygg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "xalg.h"
 
-double		ft_abs(double n)
+double					ft_abs(double n)
 {
 	return (n >= 0) ? (n) : (-n);
 }
 
-int			f_s(int nb)
+int						f_s(int nb)
 {
-	double	x_n;
-	double	b;
-	double	x_n_1;
+	double				x_n;
+	double				b;
+	double				x_n_1;
 
 	if (nb >= 0)
 	{

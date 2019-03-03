@@ -6,17 +6,17 @@
 /*   By: mstygg <mstygg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 00:30:56 by tmors-ma          #+#    #+#             */
-/*   Updated: 2019/03/03 18:53:32 by mstygg           ###   ########.fr       */
+/*   Updated: 2019/03/03 19:37:04 by mstygg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "xalg.h"
 
-int		copy_down(t_x *row, t_x *new_row, int xc)
+int					copy_down(t_x *row, t_x *new_row, int xc)
 {
-	t_x		*x;
-	t_x		*co;
-	t_x		*new;
+	t_x				*x;
+	t_x				*co;
+	t_x				*new;
 	unsigned char	name[2];
 
 	x = row;
@@ -33,11 +33,11 @@ int		copy_down(t_x *row, t_x *new_row, int xc)
 	return (1);
 }
 
-int		copy_right(t_x *row, t_x *new_row, int xc)
+int					copy_right(t_x *row, t_x *new_row, int xc)
 {
-	t_x		*x;
-	t_x		*co;
-	t_x		*new;
+	t_x				*x;
+	t_x				*co;
+	t_x				*new;
 	unsigned char	name[2];
 
 	x = row;
@@ -56,9 +56,9 @@ int		copy_right(t_x *row, t_x *new_row, int xc)
 	return (1);
 }
 
-int		matrix_insert_right_one(t_x *most_right)
+int					matrix_insert_right_one(t_x *most_right)
 {
-	t_x *new;
+	t_x				*new;
 
 	if (!(new = new_tx(0)))
 		return (0);

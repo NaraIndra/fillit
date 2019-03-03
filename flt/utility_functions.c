@@ -6,15 +6,15 @@
 /*   By: mstygg <mstygg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 00:29:44 by tmors-ma          #+#    #+#             */
-/*   Updated: 2019/03/03 18:51:02 by mstygg           ###   ########.fr       */
+/*   Updated: 2019/03/03 19:45:53 by mstygg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "xalg.h"
 
-t_x		*find_column_object_by_name(t_x *root,  unsigned char *name)
+t_x		*find_column_object_by_name(t_x *root, unsigned char *name)
 {
-	t_x 	*t;
+	t_x	*t;
 
 	t = root;
 	while ((t = t->r) != root)
@@ -33,15 +33,15 @@ int		in_arr(t_x *e, t_x *arr[], int *size)
 		if (arr[i] == e)
 			return (1);
 		i++;
-	}	
+	}
 	return (0);
 }
 
 /*
-** ft_strlen(src) can be replaced by 
+** ft_strlen(src) can be replaced by
 */
 
-int		is_connected( unsigned char *src)
+int		is_connected(unsigned char *src)
 {
 	int connects;
 	int i;
@@ -69,7 +69,7 @@ int		is_connected( unsigned char *src)
 	return (connects < 6 ? 0 : 1);
 }
 
-int		is_valid( unsigned char *str)
+int		is_valid(unsigned char *str)
 {
 	int i;
 	int	pieces;

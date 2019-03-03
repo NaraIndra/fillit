@@ -6,7 +6,7 @@
 /*   By: mstygg <mstygg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 00:30:04 by tmors-ma          #+#    #+#             */
-/*   Updated: 2019/03/03 16:33:20 by mstygg           ###   ########.fr       */
+/*   Updated: 2019/03/03 19:41:59 by mstygg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@
 ** shifts to the left, skips empty rows
 */
 
-void		prepare_line(unsigned char *dst, unsigned char *src, int sh_m, int map_size)
+void				prepare_line(unsigned char *dst,
+					unsigned char *src, int sh_m, int map_size)
 {
-	int		n;
-	int		count;
-	int		cn;
+	int				n;
+	int				count;
+	int				cn;
 
 	n = 0;
 	count = map_size;
@@ -45,12 +46,12 @@ void		prepare_line(unsigned char *dst, unsigned char *src, int sh_m, int map_siz
 	}
 }
 
-int			get_sh_m(unsigned char *str)
+int					get_sh_m(unsigned char *str)
 {
-	int		i;
-	int		new_line;
-	int		sh_m;
-	int		length;
+	int				i;
+	int				new_line;
+	int				sh_m;
+	int				length;
 
 	length = 20;
 	new_line = 1;
@@ -78,9 +79,10 @@ int			get_sh_m(unsigned char *str)
 ** last tetramino must be 20 length, others are 21 (contain 2\n)
 */
 
-int			get_figure(int fd, unsigned char *line, int prev_length, int map_size)
+int					get_figure(int fd, unsigned char *line,
+					int prev_length, int map_size)
 {
-	int		ret;
+	int				ret;
 	unsigned char	buf[22];
 
 	ft_bzero(buf, 22);
@@ -94,7 +96,8 @@ int			get_figure(int fd, unsigned char *line, int prev_length, int map_size)
 	return (ft_ustrlen(buf));
 }
 
-int			process_file(char *file_name, t_x *root,  unsigned char ***cols, int map_size)
+int					process_file(char *file_name, t_x *root,
+					unsigned char ***cols, int map_size)
 {
 	int				fd;
 	unsigned char	figure[2];
